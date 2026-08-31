@@ -1,0 +1,706 @@
+/* Paleta de colores */
+:root {
+    --color-fondo: #FCE4E7;      /* Rosa blush suave */
+    --color-texto: #3B1F24;      /* Burdeos profundo */
+    --color-primario: #EA5E78;   /* Rosa coral vibrante */
+    --color-secundario: #F2A2B3; /* Rosa pastel */
+    --fondo-tarjeta: #ffffff;    /* Blanco */
+}
+
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* BARRA DE NAVEGACIÓN */
+nav {
+    background: #ffffff;
+    border-bottom: 2px solid var(--color-secundario);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-texto);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a.activo, .nav-links a:hover {
+    color: var(--color-primario);
+}
+
+/* CONTENEDOR CON DEGRADADO UNIFICADO */
+.contenedor-principal {
+    background: linear-gradient(135deg, var(--color-primario), var(--color-texto));
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 1.5rem;
+    flex-grow: 1; /* Esto hace que el degradado ocupe todo el espacio hasta el footer */
+}
+
+/* Sección Hero interna */
+.hero-contenido {
+    text-align: center;
+    max-width: 700px;
+    margin-bottom: 3.5rem; /* Separación suave entre el botón y la tarjeta */
+}
+
+.hero-contenido h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-family: 'Georgia', serif;
+}
+
+.hero-contenido p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+/* Botón llamativo */
+.btn-principal {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: var(--color-secundario);
+    color: var(--color-texto);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-principal:hover {
+    transform: scale(1.05);
+    background-color: #EA5E78;
+}
+
+/* Sección informativa inferior */
+.seccion-info {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.tarjeta-bienvenida {
+    background-color: var(--fondo-tarjeta);
+    color: var(--color-texto); /* Texto oscuro para que se lea bien sobre blanco */
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta-bienvenida h3 {
+    color: var(--color-primario);
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+}
+
+.tarjeta-bienvenida p {
+    color: #5a4548; 
+    font-size: 1rem;
+}
+
+/* --- FOOTER (CONSERVA SU COLOR ORIGINAL) --- */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--color-texto); /* Burdeos profundo */
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* DISEÑO MÓVIL */
+@media (max-width: 768px) {
+    .nav-contenedor {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    .contenedor-principal {
+        padding: 3rem 1rem;
+    }
+    .hero-contenido h1 {
+        font-size: 2.2rem;
+    }
+    .hero-contenido p {
+        font-size: 1rem;
+    }
+    .tarjeta-bienvenida {
+        padding: 1.8rem 1.2rem;
+    }
+}
+
+/* ==========================================
+   ESTILOS DE LA PÁGINA DE CATÁLOGO 
+   ========================================== */
+
+.catalogo-seccion {
+    background-color: #ffffff; 
+    padding: 4rem 5%;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.catalogo-contenedor {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    gap: 3rem; 
+}
+
+/* --- COLUMNA IZQUIERDA (BANNER) --- */
+.columna-tendencias {
+    flex: 1; /* Toma el mismo ancho base que la cuadrícula */
+    position: relative;
+}
+
+.tarjeta-tendencias-wrapper {
+    position: relative;
+    height: 100%;
+    min-height: 600px; /* Altura mínima para que luzca imponente */
+}
+
+.img-tendencias-grande {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hace que la foto llene el espacio sin deformarse */
+    display: block;
+}
+
+/* El recuadro blanco que dice #tendencias */
+.cuadro-flotante-tendencias {
+    position: absolute;
+    bottom: 25%;
+    right: -10%; /* Sobresale un poquito hacia la derecha como en tu imagen */
+    background-color: #ffffff;
+    padding: 2.5rem 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    z-index: 10;
+}
+
+.cuadro-flotante-tendencias h2 {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 2.5rem;
+    color: #000000;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+.enlace-lee-mas {
+    color: #000000;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-bottom: 2px solid #000000; /* Línea negra debajo del texto */
+    padding-bottom: 2px;
+}
+
+/* --- COLUMNA DERECHA (CUADRÍCULA DE PRODUCTOS) --- */
+.columna-productos {
+    flex: 1.2; /* Un poquito más ancha para que entren bien las dos columnas */
+}
+
+.cuadricula-productos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas exactas */
+    gap: 3rem 2rem; /* Espacio entre filas y columnas */
+}
+
+.tarjeta-producto {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.contenedor-img-producto {
+    width: 100%;
+    height: 280px; /* Altura estándar para las fotos de producto */
+    background-color: #EA5E78; /* Fondo gris claro por si no hay imagen cargada */
+    overflow: hidden;
+}
+
+.contenedor-img-producto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.precio-producto {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-primario);
+}
+
+.precio-producto{
+    display:block;
+    margin:10px 0;
+    font-weight:bold;
+    color:#d86c8c;
+}
+
+.btn-pedido{
+    display:block;
+    text-align:center;
+    margin-top:12px;
+    padding:10px;
+    background:#d86c8c;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.btn-pedido:hover{
+    background:#c45475;
+}
+
+.descripcion-producto {
+    font-size: 0.9rem;
+    color: #4a4a4a;
+    line-height: 1.4;
+}
+
+/* --- RESPONSIVE PARA EL CATÁLOGO --- */
+@media (max-width: 992px) {
+    .catalogo-contenedor {
+        flex-direction: column; /* En tabletas y celulares se pone uno abajo del otro */
+        gap: 4rem;
+    }
+    
+    .cuadro-flotante-tendencias {
+        right: 5%; /* Ya no sobresale de la pantalla en móviles */
+        bottom: 10%;
+    }
+    
+    .tarjeta-tendencias-wrapper {
+        min-height: 450px;
+    }
+}
+
+@media (max-width: 576px) {
+    .cuadricula-productos {
+        grid-template-columns: 1fr; /* En pantallas muy pequeñas, los productos van en 1 sola columna */
+    }
+    
+    .cuadro-flotante-tendencias {
+        position: relative;
+        right: 0;
+        bottom: 0;
+        margin-top: 1rem;
+        box-shadow: none;
+        border: 1px solid #eee;
+    }
+}
+/* ==========================================
+   LOS BOTONES DE FILTROS
+   ========================================== */
+.filtros {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.filtros-grupo {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filtros-grupo button {
+    background: white;
+    color: var(--color-texto);
+    border: 2px solid var(--color-secundario);
+    padding: 0.8rem 1.4rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.filtros-grupo button:hover {
+    background: var(--color-secundario);
+    transform: translateY(-2px);
+}
+
+.filtros-grupo button.activo {
+    background: var(--color-primario);
+    color: white;
+    border-color: var(--color-primario);
+}
+
+/* ==========================================
+   RASTREO DE PEDIDOS (HORIZONTAL Y SIN FONDO BLANCO)
+   ========================================== */
+.contenedor-rastreo {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1.5rem 1.5rem 4rem 1.5rem; /* Arriba, Derecha, Abajo, Izquierda */
+    background: linear-gradient(135deg, var(--color-fondo), #ffffff);
+}
+
+.tarjeta-rastreo {
+    width: 100%;
+    max-width: 1000px; /* Ancho extendido */
+    margin: 0 auto;
+    /* Sin fondo blanco ni bordes */
+}
+
+.titulo-rastreo {
+    font-family: 'Georgia', serif;
+    color: var(--color-texto);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.subtitulo-rastreo {
+    color: #5a4548;
+    margin-bottom: 1.5rem; 
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.formulario-busqueda {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem; 
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-rastreo {
+    flex-grow: 1;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    font-size: 1rem;
+    color: var(--color-texto);
+    outline: none;
+    transition: border-color 0.3s ease;
+    background-color: #fff;
+}
+
+.input-rastreo:focus {
+    border-color: var(--color-primario);
+}
+
+.btn-buscar {
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(234, 94, 120, 0.3);
+}
+
+.btn-buscar:hover {
+    transform: scale(1.05);
+    background-color: #d14a63;
+}
+
+/* Detalles del Pedido - Cuadrícula Horizontal */
+/* 4. Reducimos el espacio debajo de la cajita de detalles de 3.5rem a 2.5rem */
+.detalles-pedido {
+    background-color: #ffffff; 
+    padding: 1.2rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2.5rem; 
+    border-left: 5px solid var(--color-primario);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    align-items: center;
+    text-align: center;
+}
+
+.detalles-pedido h3 {
+    color: var(--color-texto);
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.detalles-pedido p {
+    color: #5a4548;
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.2;
+}
+
+/* Timeline (Línea de tiempo HORIZONTAL) */
+.timeline {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    position: relative;
+    padding: 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 19px; 
+    left: 10%;
+    right: 10%;
+    width: 80%;
+    height: 2px;
+    background-color: #dcdcdc; /* Línea gris de fondo */
+    z-index: 1;
+}
+
+.timeline-paso {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    flex: 1; 
+    gap: 0.8rem;
+}
+
+.icono-paso {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    background-color: #fce4e7; /* Fondo del ícono */
+    border: 2px solid #e0e0e0;
+    color: #ccc;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+}
+
+.texto-paso h4 {
+    color: var(--color-texto);
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.texto-paso p {
+    font-size: 0.85rem;
+    color: #5a4548;
+    margin: 0;
+    padding: 0 10px; 
+}
+
+/* Estados de la Línea de Tiempo */
+.timeline-paso.completado .icono-paso {
+    background-color: var(--color-secundario);
+    border-color: var(--color-secundario);
+    color: var(--color-texto);
+}
+
+.timeline-paso.activo .icono-paso {
+    background-color: var(--color-primario);
+    border-color: var(--color-primario);
+    color: white;
+    box-shadow: 0 0 12px rgba(234, 94, 120, 0.4);
+}
+
+.timeline-paso.activo .texto-paso h4 {
+    color: var(--color-primario);
+}
+
+.timeline-paso.pendiente .icono-paso {
+    background-color: #ffffff;
+    color: #bbb;
+}
+
+/* ==========================================
+   ESTILOS DEL CHECKOUT (ProcesarCompra)
+   ========================================== */
+.contenedor-compra {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(135deg, #FCE4E7, #ffffff);
+  min-height: 80vh;
+}
+
+.tarjeta-compra {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 500px;
+}
+
+.titulo-checkout {
+  font-family: 'Georgia', serif;
+  color: #3B1F24;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.subtitulo {
+  color: #5a4548;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.resumen-pedido {
+  border-bottom: 2px solid #FCE4E7;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.item-carrito {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.info-producto h4 {
+  color: #3B1F24;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.info-producto p {
+  color: #5a4548;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.precio-producto {
+  font-weight: bold;
+  color: #EA5E78;
+}
+
+.total-pedido {
+  display: flex;
+  justify-content: space-between;
+  color: #3B1F24;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.formulario-cliente {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formulario-cliente input,
+.formulario-cliente textarea {
+  padding: 0.8rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.formulario-cliente input:focus,
+.formulario-cliente textarea:focus {
+  border-color: #EA5E78;
+}
+
+.btn-comprar {
+  background-color: #EA5E78;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+  margin-top: 1rem;
+}
+
+.btn-comprar:hover:not(:disabled) {
+  background-color: #d14a63;
+  transform: scale(1.02);
+}
+
+.btn-comprar:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.mensaje-estado {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.mensaje-exito {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.mensaje-error {
+  background-color: #f8d7da;
+  color: #721c24;
+}

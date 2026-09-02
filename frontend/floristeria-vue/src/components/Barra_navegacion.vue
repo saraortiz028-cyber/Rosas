@@ -15,6 +15,11 @@
       <template v-else>
         <router-link to="/auth" active-class="activo">Iniciar Sesión / Registro</router-link>
       </template>
+
+       <!-- Boton modo oscuro / claro -->
+       <button class="theme-toggle" @click="cambiarTema" title="Cambiar tema">
+  {{ temaActual === 'dark' ? '☀️' : '🌙' }}
+</button>
     </div>
   </nav>
 </template>
@@ -24,11 +29,18 @@ export default {
   name: 'Barra_navegacion',
   data() {
     return {
-      haIniciadoSesion: false
+      haIniciadoSesion: false,
+      temaActual: 'light' // Guarda si es 'light' o 'dark'
     }
   },
   mounted() {
     this.verificarSesion();
+
+    //Al cargar la página, lee el tema guardado en localStorage
+    this.temaActual = localStorage.getItem('theme') || 'light';
+    
+    //Le aplica el atributo al HTML
+    document.documentElement.setAttribute('data-theme', this.temaActual);
   },
   watch: {
     $route() {
@@ -43,6 +55,12 @@ export default {
       localStorage.removeItem('cliente');
       this.haIniciadoSesion = false;
       this.$router.push('/auth');
+    },
+    // Función que se ejecuta al presionar el botón de la Luna / Sol
+    cambiarTema() {
+      this.temaActual = this.temaActual === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', this.temaActual);
+      localStorage.setItem('theme', this.temaActual);
     }
   }
 }

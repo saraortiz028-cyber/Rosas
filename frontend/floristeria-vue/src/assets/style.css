@@ -7,6 +7,15 @@
     --fondo-tarjeta: #ffffff;    /* Blanco */
 }
 
+[data-theme="dark"] {
+    --color-fondo: #a12539;      
+    --color-texto: #3B1F24;     
+    --color-primario: #FF6B8B;  
+    --color-secundario: #5E2230; 
+    --fondo-tarjeta: #2D1B20;    
+    --color-nav: #28171B;        
+}
+
 /* Reset básico */
 * {
     box-sizing: border-box;
@@ -26,7 +35,7 @@ body {
 
 /* BARRA DE NAVEGACIÓN */
 nav {
-    background: #ffffff;
+    background: var(--color-nav, #ffffff); 
     border-bottom: 2px solid var(--color-secundario);
     padding: 1rem 5%;
     display: flex;
@@ -34,6 +43,8 @@ nav {
     position: sticky;
     top: 0;
     z-index: 1000;
+    /* Agregamos transición para que al cambiar de modo se sienta suave */
+    transition: background-color 0.3s ease;
 }
 
 .nav-contenedor {

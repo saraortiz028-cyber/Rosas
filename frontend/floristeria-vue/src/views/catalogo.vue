@@ -45,11 +45,6 @@
 </template>
 
 <script>
-const imagenes = import.meta.glob(
-  '../assets/**/*.{jpg,jpeg,png}',
-  { eager: true, import: 'default' }
-);
-
 export default {
   name: 'Catalogo',
   data() {
@@ -67,24 +62,28 @@ export default {
         return coincideTipo && coincideOcasion;
       });
     }
+  }, 
+  mounted() {
+    fetch('http://localhost/floristeria/get_productos.php')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Error de HTTP: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => { 
+        this.productos = data; 
+      })
+      .catch(error => console.error("Error al traer productos:", error));
   },
- mounted() {
-  fetch('/api/get_productos.php')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Error de HTTP: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => { 
-      this.productos = data; 
-    })
-    .catch(error => console.error("Error al traer productos:", error));
-},
   methods: {
-    obtenerRutaImagen(rutaImagen) {
-      const rutaCompleta = `../assets/${rutaImagen}`;
-      return imagenes[rutaCompleta];
+    obtenerRutaImagen(nombreImagen) {
+      if (!nombreImagen) return '';
+      try {
+        return new URL(`../assets/${nombreImagen}`, import.meta.url).href;
+      } catch (e) {
+        return '';
+      }
     },
     iniciarCompra(producto) {
       localStorage.setItem('productoSeleccionado', JSON.stringify(producto));

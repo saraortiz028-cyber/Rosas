@@ -94,6 +94,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 20px;
+
 }
 .perfil-card, .pedidos-card {
   background: white;

@@ -1,20 +1,25 @@
 <template>
-  <div class="contenedor-principal">
-    <div class="hero-contenido"> 
-      <h1>Flores para toda ocasión</h1>
-      <p>Haz tus pedidos de manera rápida, eficiente y sin complicaciones. 
-        ¡Nosotros nos encargamos de llevar la magia a domicilio!</p>
-      <router-link to="/catalogo" class="btn-principal">Ver Catálogo</router-link>
-    </div>
+  <main class="inicio">
+    <section class="hero">
+      <div class="hero-contenido">
+        <span class="etiqueta">Rosa Eterna</span>
 
-    <div class="seccion-info">
-      <div class="tarjeta-bienvenida">
-        <h3>Gracias a nuestro servicio en línea</h3>
-        <p>Eliges tu diseño favorito, programas la hora de entrega y listo. 
-           Flores frescas de invernadero directo a su puerta el mismo día.</p>
+        <h1>Momentos que florecen</h1>
+
+     
+
+        <router-link to="/catalogo" class="btn-principal">
+          Explorar catálogo
+          <span>→</span>
+        </router-link>
+
+        <div class="beneficios">
+          <span>✦ Flores frescas</span>
+          <span>✦ Entrega a domicilio</span>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
 <script>
@@ -22,3 +27,101 @@ export default {
   name: 'Inicio'
 }
 </script>
+
+<style scoped>
+.inicio {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  color: var(--color-texto);
+}
+
+.hero {
+  width: 100%;
+  max-width: 1120px;
+  margin: auto;
+  padding: 70px 30px;
+}
+
+.hero-contenido {
+  max-width: 600px;
+}
+
+.etiqueta {
+  color: var(--color-principal);
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 16px 0;
+  font-family: Georgia, serif;
+  font-size: clamp(44px, 7vw, 76px);
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+
+
+.btn-principal {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 15px 23px;
+  border-radius: 30px;
+  background: var(--color-principal);
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(194, 24, 91, 0.25);
+  transition: 0.25s ease;
+}
+
+.btn-principal:hover {
+  background: var(--color-principal-hover);
+  transform: translateY(-3px);
+}
+
+.btn-principal span {
+  font-size: 22px;
+}
+
+.beneficios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 30px;
+  color: var(--color-principal);
+  font-size: 14px;
+}
+
+@media (max-width: 700px) {
+  .inicio {
+    min-height: calc(100vh - 70px);
+  }
+
+  .hero {
+    padding: 55px 24px;
+    text-align: center;
+  }
+
+  .hero-contenido {
+    max-width: 100%;
+  }
+
+  .hero-contenido p {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .btn-principal {
+    margin: auto;
+  }
+
+  .beneficios {
+    justify-content: center;
+  }
+}
+</style>

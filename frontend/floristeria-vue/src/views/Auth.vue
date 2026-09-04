@@ -150,6 +150,7 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 40px;
+  
 }
 .auth-box {
   background: #fff;

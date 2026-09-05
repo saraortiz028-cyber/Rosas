@@ -54,6 +54,7 @@ html,
 body,
 #app {
   margin: 0;
+  height: 100%;
   min-height: 100%;
 }
 
@@ -65,12 +66,17 @@ body {
 }
 
 .app-container {
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .contenido-principal {
-  flex: 1;
+  flex: 1 0 auto;
+  min-height: 0;
+}
+
+footer {
+  flex-shrink: 0;
 }
 </style>

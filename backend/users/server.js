@@ -67,6 +67,66 @@ app.post('/api/login', (req, res) => {
     });
 });
 
+// 3. REGISTRAR UNA COMPRA DE DEMOSTRACIÓN
+app.post('/api/pedidos', (req, res) => {
+    const { clienteId, productoId } = req.body;
+
+    if (!clienteId || !productoId) {
+        return res.status(400).json({ error: 'Faltan datos para registrar la compra' });
+    }
+
+    const productoQuery = 'SELECT idProducto, precioActual FROM producto WHERE idProducto = ?';
+
+    db.query(productoQuery, [productoId], (productoError, productos) => {
+        if (productoError) return res.status(500).json({ error: 'Error al consultar el producto' });
+        if (productos.length === 0) {
+            return res.status(404).json({ error: 'Producto no encontrado' });
+        }
+
+        const producto = productos[0];
+        const pedidoQuery = `
+            INSERT INTO pedido
+            (dedicatoria, fechaPedido, nombreDestinatario, teléfonoDestinatario,
+             fechaEntrega, lugarEntrega, estadoPedido, total, Cliente_idCliente)
+            VALUES (?, NOW(), ?, ?, DATE_ADD(CURDATE(), INTERVAL 3 DAY), ?, ?, ?, ?)
+        `;
+        const pedidoDatos = [
+            'Compra simulada',
+            'Cliente de demostración',
+            '0000000000',
+            'Entrega simulada',
+            'Confirmado',
+            producto.precioActual,
+            clienteId
+        ];
+
+        db.query(pedidoQuery, pedidoDatos, (pedidoError, resultadoPedido) => {
+            if (pedidoError) return res.status(500).json({ error: 'No se pudo registrar el pedido' });
+
+            const relacionQuery = `
+                INSERT INTO pedido_has_producto
+                (Pedido_idPedido, Pedido_Cliente_idCliente, Producto_idProducto)
+                VALUES (?, ?, ?)
+            `;
+
+            db.query(
+                relacionQuery,
+                [resultadoPedido.insertId, clienteId, producto.idProducto],
+                (relacionError) => {
+                    if (relacionError) {
+                        return res.status(500).json({ error: 'No se pudo asociar el producto al pedido' });
+                    }
+
+                    res.status(201).json({
+                        mensaje: 'Compra simulada registrada',
+                        idPedido: resultadoPedido.insertId
+                    });
+                }
+            );
+        });
+    });
+});
+
 // 3. VER LOS PEDIDOS DE UN CLIENTE ESPECÍFICO
 app.get('/api/mis-pedidos/:idCliente', (req, res) => {
     const { idCliente } = req.params;

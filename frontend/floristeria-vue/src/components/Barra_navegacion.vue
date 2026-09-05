@@ -72,7 +72,8 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 15px 20px;
-  background-color: #ffffff;
+  background-color: var(--color-superficie);
+  border-bottom: 1px solid var(--color-borde);
 }
 
 .nav-links {
@@ -85,7 +86,7 @@ export default {
 .nav-links a,
 .nav-btn-logout {
   text-decoration: none;
-  color: #2c3e50;
+  color: var(--color-texto);
   font-size: 16px;
   font-weight: 500;
   background: transparent;
@@ -100,12 +101,12 @@ export default {
 /* Cambio de color al pasar el cursor */
 .nav-links a:hover,
 .nav-btn-logout:hover {
-  color: #d81b60;
+  color: var(--color-principal);
 }
 
 /* Enlace activo */
 .nav-links a.activo {
-  color: #d81b60;
+  color: var(--color-principal);
   font-weight: bold;
 }
 </style>

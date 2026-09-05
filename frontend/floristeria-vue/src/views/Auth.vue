@@ -150,13 +150,13 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 40px;
-  
+  min-height: 100%;
 }
 .auth-box {
-  background: #fff;
+  background: var(--color-superficie);
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: var(--sombra);
   width: 100%;
   max-width: 400px;
 }
@@ -167,13 +167,13 @@ export default {
 .tabs button {
   flex: 1;
   padding: 10px;
-  background: #eee;
+  background: var(--color-fondo);
   border: none;
   cursor: pointer;
   font-weight: bold;
 }
 .tabs button.active {
-  background: #d81b60;
+  background: var(--color-principal);
   color: white;
 }
 .input-group {
@@ -188,7 +188,7 @@ export default {
 .input-group input {
   width: 100%;
   padding: 8px 35px 8px 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-borde);
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -203,19 +203,19 @@ export default {
   background: none;
   border: none;
   cursor: pointer;
-  color: #666;
+  color: var(--color-secundario);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
 }
 .btn-eye:hover {
-  color: #d81b60;
+  color: var(--color-principal);
 }
 .btn-submit {
   width: 100%;
   padding: 10px;
-  background: #d81b60;
+  background: var(--color-principal);
   color: white;
   border: none;
   border-radius: 4px;
@@ -223,11 +223,11 @@ export default {
   font-weight: bold;
 }
 .btn-submit:hover {
-  background: #ad1457;
+  background: var(--color-principal-hover);
 }
 .mensaje {
   margin-top: 15px;
-  color: red;
+  color: var(--color-principal-hover);
   text-align: center;
   font-size: 14px;
 }

@@ -1,19 +1,18 @@
 /* Paleta de colores */
 :root {
-    --color-fondo: #FCE4E7;      /* Rosa blush suave */
-    --color-texto: #3B1F24;      /* Burdeos profundo */
-    --color-primario: #EA5E78;   /* Rosa coral vibrante */
-    --color-secundario: #F2A2B3; /* Rosa pastel */
-    --fondo-tarjeta: #ffffff;    /* Blanco */
+    --color-fondo: #fff8fb;
+    --color-texto: #3d2630;
+    --color-primario: #c2185b;
+    --color-secundario: #7b5361;
+    --fondo-tarjeta: #ffffff;
 }
 
 [data-theme="dark"] {
-    --color-fondo: #a12539;      
-    --color-texto: #3B1F24;     
-    --color-primario: #FF6B8B;  
-    --color-secundario: #5E2230; 
-    --fondo-tarjeta: #2D1B20;    
-    --color-nav: #28171B;        
+    --color-fondo: #21181d;
+    --color-texto: #fff0f5;
+    --color-primario: #f06292;
+    --color-secundario: #d8b9c5;
+    --fondo-tarjeta: #302229;
 }
 
 /* Reset básico */
@@ -35,7 +34,7 @@ body {
 
 /* BARRA DE NAVEGACIÓN */
 nav {
-    background: var(--color-nav, #ffffff); 
+    background: var(--color-superficie, #ffffff); 
     border-bottom: 2px solid var(--color-secundario);
     padding: 1rem 5%;
     display: flex;
@@ -119,7 +118,7 @@ nav {
 
 .btn-principal:hover {
     transform: scale(1.05);
-    background-color: #EA5E78;
+    background-color: var(--color-principal);
 }
 
 /* Sección informativa inferior */
@@ -277,7 +276,7 @@ footer {
 .contenedor-img-producto {
     width: 100%;
     height: 280px; /* Altura estándar para las fotos de producto */
-    background-color: #EA5E78; /* Fondo gris claro por si no hay imagen cargada */
+    background-color: var(--color-principal); /* Fondo por si no hay imagen cargada */
     overflow: hidden;
 }
 
@@ -297,7 +296,7 @@ footer {
     display:block;
     margin:10px 0;
     font-weight:bold;
-    color:#d86c8c;
+    color: var(--color-principal);
 }
 
 .btn-pedido{
@@ -305,7 +304,7 @@ footer {
     text-align:center;
     margin-top:12px;
     padding:10px;
-    background:#d86c8c;
+    background: var(--color-principal);
     color:white;
     text-decoration:none;
     border-radius:8px;
@@ -313,7 +312,7 @@ footer {
 }
 
 .btn-pedido:hover{
-    background:#c45475;
+    background: var(--color-principal-hover);
 }
 
 .descripcion-producto {
@@ -370,7 +369,7 @@ footer {
 }
 
 .filtros-grupo button {
-    background: white;
+    background: var(--color-superficie);
     color: var(--color-texto);
     border: 2px solid var(--color-secundario);
     padding: 0.8rem 1.4rem;
@@ -400,7 +399,7 @@ footer {
     justify-content: center;
     align-items: flex-start;
     padding: 1.5rem 1.5rem 4rem 1.5rem; /* Arriba, Derecha, Abajo, Izquierda */
-    background: linear-gradient(135deg, var(--color-fondo), #ffffff);
+    background: linear-gradient(135deg, var(--color-fondo), var(--color-superficie));
 }
 
 .tarjeta-rastreo {
@@ -419,7 +418,7 @@ footer {
 }
 
 .subtitulo-rastreo {
-    color: #5a4548;
+    color: var(--color-secundario);
     margin-bottom: 1.5rem; 
     text-align: center;
     font-size: 1.1rem;
@@ -437,13 +436,13 @@ footer {
 .input-rastreo {
     flex-grow: 1;
     padding: 0.8rem 1.5rem;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--color-borde);
     border-radius: 30px;
     font-size: 1rem;
     color: var(--color-texto);
     outline: none;
     transition: border-color 0.3s ease;
-    background-color: #fff;
+    background-color: var(--color-superficie);
 }
 
 .input-rastreo:focus {
@@ -460,18 +459,18 @@ footer {
     font-size: 1rem;
     cursor: pointer;
     transition: transform 0.2s ease, background-color 0.3s ease;
-    box-shadow: 0 4px 10px rgba(234, 94, 120, 0.3);
+    box-shadow: 0 4px 10px rgba(194, 24, 91, 0.3);
 }
 
 .btn-buscar:hover {
     transform: scale(1.05);
-    background-color: #d14a63;
+    background-color: var(--color-principal-hover);
 }
 
 /* Detalles del Pedido - Cuadrícula Horizontal */
 /* 4. Reducimos el espacio debajo de la cajita de detalles de 3.5rem a 2.5rem */
 .detalles-pedido {
-    background-color: #ffffff; 
+    background-color: var(--color-superficie); 
     padding: 1.2rem 1.5rem;
     border-radius: 12px;
     margin-bottom: 2.5rem; 
@@ -491,7 +490,7 @@ footer {
 }
 
 .detalles-pedido p {
-    color: #5a4548;
+    color: var(--color-secundario);
     margin: 0;
     font-size: 0.85rem;
     line-height: 1.2;
@@ -514,7 +513,7 @@ footer {
     right: 10%;
     width: 80%;
     height: 2px;
-    background-color: #dcdcdc; /* Línea gris de fondo */
+    background-color: var(--color-borde); /* Línea de fondo */
     z-index: 1;
 }
 
@@ -538,9 +537,9 @@ footer {
     align-items: center;
     font-weight: bold;
     font-size: 1.1rem;
-    background-color: #fce4e7; /* Fondo del ícono */
-    border: 2px solid #e0e0e0;
-    color: #ccc;
+    background-color: var(--color-fondo); /* Fondo del ícono */
+    border: 2px solid var(--color-borde);
+    color: var(--color-secundario);
     transition: all 0.3s ease;
     margin: 0 auto;
 }
@@ -553,7 +552,7 @@ footer {
 
 .texto-paso p {
     font-size: 0.85rem;
-    color: #5a4548;
+    color: var(--color-secundario);
     margin: 0;
     padding: 0 10px; 
 }
@@ -569,7 +568,7 @@ footer {
     background-color: var(--color-primario);
     border-color: var(--color-primario);
     color: white;
-    box-shadow: 0 0 12px rgba(234, 94, 120, 0.4);
+    box-shadow: 0 0 12px rgba(194, 24, 91, 0.4);
 }
 
 .timeline-paso.activo .texto-paso h4 {
@@ -577,8 +576,8 @@ footer {
 }
 
 .timeline-paso.pendiente .icono-paso {
-    background-color: #ffffff;
-    color: #bbb;
+    background-color: var(--color-superficie);
+    color: var(--color-secundario);
 }
 
 /* ==========================================
@@ -588,12 +587,12 @@ footer {
   display: flex;
   justify-content: center;
   padding: 3rem 1.5rem;
-  background: linear-gradient(135deg, #FCE4E7, #ffffff);
+    background: linear-gradient(135deg, var(--color-fondo), var(--color-superficie));
   min-height: 80vh;
 }
 
 .tarjeta-compra {
-  background-color: #ffffff;
+    background-color: var(--color-superficie);
   padding: 2.5rem;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
@@ -603,20 +602,20 @@ footer {
 
 .titulo-checkout {
   font-family: 'Georgia', serif;
-  color: #3B1F24;
+    color: var(--color-texto);
   text-align: center;
   margin-bottom: 0.5rem;
 }
 
 .subtitulo {
-  color: #5a4548;
+    color: var(--color-secundario);
   text-align: center;
   margin-bottom: 2rem;
   font-size: 0.95rem;
 }
 
 .resumen-pedido {
-  border-bottom: 2px solid #FCE4E7;
+    border-bottom: 2px solid var(--color-fondo);
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
 }
@@ -629,26 +628,26 @@ footer {
 }
 
 .info-producto h4 {
-  color: #3B1F24;
+    color: var(--color-texto);
   margin: 0;
   font-size: 1rem;
 }
 
 .info-producto p {
-  color: #5a4548;
+    color: var(--color-secundario);
   margin: 0;
   font-size: 0.85rem;
 }
 
 .precio-producto {
   font-weight: bold;
-  color: #EA5E78;
+    color: var(--color-principal);
 }
 
 .total-pedido {
   display: flex;
   justify-content: space-between;
-  color: #3B1F24;
+    color: var(--color-texto);
   font-size: 1.2rem;
   margin-bottom: 2rem;
 }
@@ -662,7 +661,7 @@ footer {
 .formulario-cliente input,
 .formulario-cliente textarea {
   padding: 0.8rem 1rem;
-  border: 2px solid #e0e0e0;
+    border: 2px solid var(--color-borde);
   border-radius: 8px;
   font-size: 0.95rem;
   font-family: inherit;
@@ -672,11 +671,11 @@ footer {
 
 .formulario-cliente input:focus,
 .formulario-cliente textarea:focus {
-  border-color: #EA5E78;
+    border-color: var(--color-principal);
 }
 
 .btn-comprar {
-  background-color: #EA5E78;
+    background-color: var(--color-principal);
   color: white;
   border: none;
   padding: 1rem;
@@ -689,7 +688,7 @@ footer {
 }
 
 .btn-comprar:hover:not(:disabled) {
-  background-color: #d14a63;
+    background-color: var(--color-principal-hover);
   transform: scale(1.02);
 }
 

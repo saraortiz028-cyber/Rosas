@@ -97,14 +97,14 @@ export default {
 
 }
 .perfil-card, .pedidos-card {
-  background: white;
+  background: var(--color-superficie);
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: var(--sombra);
 }
 .btn-logout {
   margin-top: 10px;
-  background: #d32f2f;
+  background: var(--color-principal);
   color: white;
   border: none;
   padding: 8px 15px;
@@ -118,15 +118,15 @@ export default {
   margin-top: 15px;
 }
 .pedido-card {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--color-borde);
   border-radius: 6px;
   padding: 15px;
-  background: #fafafa;
+  background: var(--color-fondo);
 }
 .pedido-header {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--color-borde);
   padding-bottom: 8px;
   margin-bottom: 10px;
   font-weight: bold;
@@ -134,15 +134,15 @@ export default {
 .estado {
   padding: 3px 8px;
   border-radius: 4px;
-  background: #e0e0e0;
+  background: var(--color-borde);
   font-size: 13px;
 }
 .total {
-  color: #d81b60;
+  color: var(--color-principal);
   font-size: 16px;
 }
 .estado-texto {
   margin-top: 15px;
-  color: #666;
+  color: var(--color-secundario);
 }
 </style>

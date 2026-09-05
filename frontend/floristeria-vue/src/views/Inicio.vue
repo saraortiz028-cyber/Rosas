@@ -33,6 +33,7 @@ export default {
   min-height: calc(100vh - 80px);
   display: flex;
   align-items: center;
+  justify-content: center;
   color: var(--color-texto);
 }
 
@@ -41,10 +42,12 @@ export default {
   max-width: 1120px;
   margin: auto;
   padding: 70px 30px;
+  text-align: center;
 }
 
 .hero-contenido {
   max-width: 600px;
+  margin: auto;
 }
 
 .etiqueta {
@@ -91,6 +94,7 @@ h1 {
 .beneficios {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 18px;
   margin-top: 30px;
   color: var(--color-principal);

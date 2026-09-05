@@ -74,9 +74,14 @@
         <div class="producto-contenido">
           <h3>{{ producto.nombreProducto }}</h3>
           <span class="precio-producto">$ {{ producto.precioActual }}</span>
-          <button @click="iniciarCompra(producto)" class="btn-pedido">
-            Pedir ahora
-          </button>
+          <div class="acciones-producto">
+            <button @click="iniciarCompra(producto)" class="btn-pedido">
+              Comprar ahora
+            </button>
+            <button @click="agregarAlCarrito(producto)" class="btn-carrito">
+              Agregar al carrito
+            </button>
+          </div>
         </div>
       </article>
     </div>
@@ -171,6 +176,20 @@ export default {
     iniciarCompra(producto) {
       localStorage.setItem('productoSeleccionado', JSON.stringify(producto))
       this.$router.push('/procesar-compra')
+    },
+
+    agregarAlCarrito(producto) {
+      const carrito = JSON.parse(localStorage.getItem('carrito') || '[]')
+      const productoExistente = carrito.find(item => item.producto.idProducto === producto.idProducto)
+
+      if (productoExistente) {
+        productoExistente.cantidad += 1
+      } else {
+        carrito.push({ producto, cantidad: 1 })
+      }
+
+      localStorage.setItem('carrito', JSON.stringify(carrito))
+      window.dispatchEvent(new Event('carrito-actualizado'))
     },
 
     normalizarTexto(texto) {
@@ -420,6 +439,27 @@ export default {
   color: white;
   font-weight: bold;
   cursor: pointer;
+}
+
+.acciones-producto {
+  display: grid;
+  gap: 8px;
+}
+
+.btn-carrito {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-principal);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--color-principal);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-carrito:hover {
+  background: var(--color-principal);
+  color: white;
 }
 
 .sin-resultados {
